@@ -1,7 +1,7 @@
 function Header() {
   return (
     <div>
-      <h1 className="text-red-600 font-bold">Desserts</h1>
+      <h1 className="text-black font-bold text-[50px]">Desserts</h1>
     </div>
   );
 }
