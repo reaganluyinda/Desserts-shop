@@ -7,7 +7,7 @@ function App() {
     <>
       <div className="min-h-screen bg-slate-100 px-20 pt-10">
         <Header />
-        <div className="flex">
+        <div className="flex flex-wrap ">
           <Shop />
           <div className="flex-1">
             <Cart />
