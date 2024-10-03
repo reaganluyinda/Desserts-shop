@@ -1,17 +1,18 @@
 import cartimage from "./assets/icon-add-to-cart.svg";
 interface CardProps {
-  waffleimage: string;
+  id: number;
+  productimage: string;
   product: string;
   productdefn: string;
   price: number;
 }
-function Card({ waffleimage, product, productdefn, price }: CardProps) {
+function Card({ id, productimage, product, productdefn, price }: CardProps) {
   return (
     <div className="border-1 border-b-gray-600 rounded-lg max-w-64 mr-4 mt-4">
       <div className="flex-col flex items-center justify-center relative">
         <img
           className="rounded-lg h-auto"
-          src={waffleimage}
+          src={productimage}
           alt="waffles"
         ></img>
         <button className=" bg-slate-50 font-semibold border-2 px-4 py-2 rounded-full absolute bottom-0 translate-y-1/2 hover:bg-slate-200 flex gap-2 ">
