@@ -1,6 +1,11 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { products } from "../product";
-export const ShopContext = createContext(null);
+import ShopContext from "./ShopContext";
+
+export type ShopContextType = {
+  addToCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
+};
 
 const getDefaultCart = () => {
   let cart: any = {};
@@ -9,7 +14,28 @@ const getDefaultCart = () => {
   }
   return cart;
 };
-export const ShopContextProvider = (CardProps: any) => {
+const ShopContextProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [cartItems, setCartItems] = useState(getDefaultCart);
-  return <ShopContext.Provider>{CardProps.children}</ShopContext.Provider>;
+  const [inCart, setInCart] = useState<boolean>(false);
+
+  const addToCart = (id: number) => {
+    setCartItems((prev: number[]) => ({ ...prev, [id]: prev[id] + 1 }));
+  };
+
+  const removeFromCart = (id: number) => {
+    setCartItems((prev: number[]) => ({
+      ...prev,
+      [id]: Math.max(prev[id] - 1, 0),
+    }));
+  };
+
+  const contextValue = { cartItems, addToCart, removeFromCart, inCart };
+
+  return (
+    <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
+  );
 };
+
+export default ShopContextProvider;
