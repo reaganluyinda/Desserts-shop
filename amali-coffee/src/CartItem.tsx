@@ -20,7 +20,7 @@ const CartItem: React.FC<CardProps> = ({
   const itemTotalPrice = price * quantity;
 
   return (
-    <div className="px-4 flex items-center">
+    <div className="px-4 flex items-center font-redhat">
       <div className="border-b-2 p-2 flex-1">
         <p className="font-semibold">{productdefn}</p>
         <div className="flex items-center ">

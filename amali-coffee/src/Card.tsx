@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import cartimage from "./assets/icon-add-to-cart.svg";
-import ShopContext from "./context/ShopContext";
+import { useShopContext } from "./context/shop-context";
 
 type CardProps = {
   id: number;
@@ -16,19 +15,24 @@ const Card: React.FC<CardProps> = ({
   productdefn,
   price,
 }) => {
-  const { addToCart, removeFromCart, cartItems, inCart } =
-    useContext(ShopContext);
+  const { addToCart, removeFromCart, cartItems } = useShopContext();
 
   const cartItemQuantity = cartItems[id];
 
+  const isInCart = cartItems[id] > 0;
+
+  const borderColor = isInCart ? "border-2 rounded-lg  border-orange-700" : "";
+
   return (
-    <div className="border-1 border-b-gray-600 rounded-lg max-w-64 mr-4 mt-4">
+    <div className="border-1 border-b-gray-600 rounded-lg max-w-64 mr-4 mt-4 font-redhat">
       <div className="flex-col flex items-center justify-center relative">
-        <img
-          className="rounded-lg h-auto"
-          src={productimage}
-          alt="waffles"
-        ></img>
+        <div className={borderColor}>
+          <img
+            className="rounded-lg h-auto "
+            src={productimage}
+            alt="waffles"
+          ></img>
+        </div>
         {cartItemQuantity === 0 ? (
           <button
             onClick={() => addToCart(id)}
