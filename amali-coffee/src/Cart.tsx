@@ -3,8 +3,12 @@ import carbon_neutral from "./assets/icon-carbon-neutral.svg";
 import { products } from "./product";
 import CartItem from "./CartItem";
 import { useShopContext } from "./context/shop-context";
-function Cart() {
-  const { cartItems, getTotalCartAmount, setShowModal } = useShopContext();
+
+interface CartProps {
+  handleShowModal: () => void;
+}
+const Cart: React.FC<CartProps> = ({ handleShowModal }) => {
+  const { cartItems, getTotalCartAmount } = useShopContext();
 
   const totalAmount = getTotalCartAmount();
 
@@ -14,7 +18,7 @@ function Cart() {
   );
 
   return (
-    <div className="border-2 border-solid rounded-xl bg-slate-50 min-h-[350px] mx-4 pb-4">
+    <div className="border-2 border-solid rounded-xl bg-slate-50 min-h-[350px] mx-4 pb-4 font-redhat">
       <h1 className="text-orange-600 font-bold px-5 pt-5 text-[25px]">
         Your cart
         {totalItems > 0 && <span className="px-1">({totalItems})</span>}
@@ -38,7 +42,7 @@ function Cart() {
               <p className="flex-1">Order Total</p>
               <p className="font-bold text-xl">${totalAmount.toFixed(2)}</p>
             </div>
-            <div className="bg-pink-100 mx-4 text-center p-4 rounded-lg flex justify-center items-center gap-2">
+            <div className="bg-pink-50 mx-4 text-center p-4 rounded-lg flex justify-center items-center gap-2">
               <img src={carbon_neutral} alt="Carbon-neutral"></img>
               <p>
                 This is a <span className="font-semibold">carbon-neutral</span>{" "}
@@ -47,7 +51,7 @@ function Cart() {
             </div>
             <div className="flex justify-center items-center ">
               <button
-                onClick={() => setShowModal(true)}
+                onClick={handleShowModal}
                 className="bg-orange-800 rounded-full px-4 p-2 text-white font-semibold w-full mx-4"
               >
                 Confirm order
@@ -69,6 +73,6 @@ function Cart() {
       )}
     </div>
   );
-}
+};
 
 export default Cart;
