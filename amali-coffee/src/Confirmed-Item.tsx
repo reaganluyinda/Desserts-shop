@@ -7,7 +7,6 @@ type CardProps = {
   quantity: number;
 };
 const ConfirmedItem: React.FC<CardProps> = ({
-  id,
   productimage,
   productdefn,
   price,
