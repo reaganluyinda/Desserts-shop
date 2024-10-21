@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <div>
+    <div className="font-redhat">
       <h1 className="text-black font-bold text-[50px]">Desserts</h1>
     </div>
   );
