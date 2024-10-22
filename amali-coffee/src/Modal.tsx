@@ -10,9 +10,14 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ handleShowModal }) => {
   //   if (!open) return null;
 
-  const { cartItems, getTotalCartAmount } = useShopContext();
+  const { cartItems, getTotalCartAmount, resetCart } = useShopContext();
 
   const totalAmount = getTotalCartAmount();
+
+  const handleNewOrder = () => {
+    resetCart();
+    handleShowModal();
+  };
 
   return (
     <div
@@ -46,7 +51,10 @@ const Modal: React.FC<ModalProps> = ({ handleShowModal }) => {
           </div>
         </div>
         <div className="flex justify-center items-center pt-2">
-          <button className="bg-orange-800 rounded-full  p-2 text-white font-semibold w-full ">
+          <button
+            onClick={handleNewOrder}
+            className="bg-orange-800 rounded-full  p-2 text-white font-semibold w-full hover:bg-orange-600 transition duration-300"
+          >
             Start New Order
           </button>
         </div>

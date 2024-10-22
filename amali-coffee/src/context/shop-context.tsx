@@ -8,6 +8,7 @@ export type ShopContextType = {
   removeFromCart: (id: number) => void;
   getTotalCartAmount: () => number;
   deleteFromCart: (id: number) => void;
+  resetCart: () => void;
 };
 
 const getDefaultCart = () => {
@@ -66,11 +67,16 @@ const ShopContextProvider: React.FC<{ children: React.ReactNode }> = ({
     }));
   };
 
+  //reseting cart
+  const resetCart = () => {
+    setCartItems(getDefaultCart());
+  };
+
   const contextValue = {
     cartItems,
     addToCart,
     removeFromCart,
-
+    resetCart,
     getTotalCartAmount,
     deleteFromCart,
   };
