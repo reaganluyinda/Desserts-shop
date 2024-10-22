@@ -52,7 +52,7 @@ const Cart: React.FC<CartProps> = ({ handleShowModal }) => {
             <div className="flex justify-center items-center ">
               <button
                 onClick={handleShowModal}
-                className="bg-orange-800 rounded-full px-4 p-2 text-white font-semibold w-full mx-4"
+                className="bg-orange-800 rounded-full px-4 p-2 text-white font-semibold w-full mx-4 hover:bg-orange-600 transition duration-300"
               >
                 Confirm order
               </button>

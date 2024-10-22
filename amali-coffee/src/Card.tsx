@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
         {cartItemQuantity === 0 ? (
           <button
             onClick={() => addToCart(id)}
-            className=" bg-slate-50 font-semibold border-2 px-4 py-2 rounded-full absolute bottom-0 translate-y-1/2 hover:bg-slate-200 flex gap-2 "
+            className=" bg-slate-50 font-semibold border-2 px-4 py-2 rounded-full absolute bottom-0 translate-y-1/2 hover:bg-slate-100 hover:border-orange-500 flex gap-2 "
           >
             <img className="" src={cartimage} alt="cart image"></img>
             Add to Cart
