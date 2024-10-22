@@ -49,7 +49,7 @@ const ShopContextProvider: React.FC<{ children: React.ReactNode }> = ({
 
   //deleted item from cart
   const deleteFromCart = (id: number) => {
-    setCartItems((prev) => {
+    setCartItems((prev: any) => {
       const updatedCart = { ...prev };
       updatedCart[id] = 0; // Set quantity to 0, or you can use `delete updatedCart[id];` to completely remove it
       return updatedCart;
